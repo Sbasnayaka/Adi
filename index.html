@@ -2,26 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday Adii!</title>
+    
+    <link rel="icon" type="image/webp" href="assets/fav icon.webp">
+    
     <style>
-        /* Vintage Botanical Poster Theme */
+        /* Cute Scrapbook Collage Theme */
+        :root {
+            --baby-pink: #FFD1DC;
+            --hot-pink: #FF69B4;
+            --deep-pink: #D81B60;
+            --white: #FFFFFF;
+            --light-bg: #FFF0F5; /* Lavender Blush */
+        }
+
         body {
             margin: 0;
             padding: 0;
-            /* Textured off-white paper look */
-            background-color: #F4F1EA;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-            font-family: 'Georgia', serif;
-            color: #8B5A62; /* Deep mauve text */
-            overflow: hidden; 
+            /* Soft baby pink background with a subtle cute dot pattern */
+            background-color: var(--light-bg);
+            background-image: radial-gradient(var(--baby-pink) 2px, transparent 2px);
+            background-size: 30px 30px;
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+            color: var(--deep-pink);
+            overflow-x: hidden;
             text-align: center;
         }
 
         /* Screen Containers */
         .screen {
             display: none;
-            height: 100vh;
+            min-height: 100vh;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -31,135 +43,112 @@
             box-sizing: border-box;
         }
 
-        #screen1 {
-            display: flex; 
-        }
+        #screen1 { display: flex; }
 
+        /* Typography */
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #C1777D; /* Poster pink */
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            color: var(--hot-pink);
             margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 3px 3px 0px var(--white), 5px 5px 0px var(--baby-pink);
+            line-height: 1.2;
+            transform: rotate(-2deg); /* Gives a playful scrapbook feel */
         }
 
         h2 {
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
-            color: #A45A60;
+            font-size: clamp(1.5rem, 7vw, 2.2rem);
+            color: var(--deep-pink);
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 15px;
+            border: 3px dashed var(--hot-pink);
+            box-shadow: 4px 4px 0px var(--baby-pink);
+            margin-bottom: 30px;
+            transform: rotate(1deg);
         }
 
-        /* Poster Block Decoration */
-        .poster-block {
-            background-color: #C1777D;
-            color: #F4F1EA;
-            padding: 10px 30px;
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        /* Buttons matching the retro poster vibe */
+        /* Cute Bubbly Buttons */
         button {
-            background-color: #F4F1EA;
-            color: #C1777D;
-            border: 2px solid #C1777D;
+            background-color: var(--hot-pink);
+            color: var(--white);
+            border: 4px solid var(--white);
+            border-radius: 30px;
             padding: 15px 35px;
-            font-size: 1.2rem;
-            font-family: 'Arial', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 10px;
+            font-size: clamp(1.1rem, 5vw, 1.4rem);
+            font-family: inherit;
             font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 10px;
+            width: 80%;
+            max-width: 280px;
+            box-shadow: 0 8px 15px rgba(255, 105, 180, 0.4);
         }
 
-        button:hover {
-            background-color: #C1777D;
-            color: #F4F1EA;
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
         }
 
-        /* Magical Buttons */
-        .magical-btn {
-            background-color: #C1777D;
-            color: #F4F1EA;
-            border: 2px solid #8B5A62;
-            box-shadow: 4px 4px 0px #8B5A62;
-        }
-
-        .magical-btn:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px #8B5A62;
-            background-color: #A45A60;
-        }
-
-        /* Warning text for Screen 2 */
+        /* Warning text for Screen 2 (like the little quote notes in the collage) */
         #warning-msg {
             display: none;
-            color: #8B5A62;
-            font-size: 1.1rem;
-            font-family: 'Arial', sans-serif;
-            margin-top: 15px;
-            background: #E8D3D5;
-            padding: 10px 20px;
-            border-left: 4px solid #8B5A62;
-            animation: shake 0.4s;
+            color: var(--deep-pink);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--hot-pink);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.05);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Falling Images (Rain) */
-        .falling-image {
+        /* Shining Pink Petals Rain */
+        .petal {
             position: absolute;
-            top: -150px;
-            object-fit: cover;
-            border: 4px solid #F4F1EA;
-            box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
-            opacity: 0.85;
+            top: -50px;
+            /* Create a petal shape using border-radius */
+            border-radius: 50% 0 50% 0;
+            background: linear-gradient(135deg, var(--baby-pink), var(--hot-pink));
+            /* Glowing/shining effect */
+            box-shadow: 0 0 10px var(--hot-pink), 0 0 20px var(--baby-pink);
+            opacity: 0.8;
             z-index: 1;
-            animation: fall linear forwards;
+            animation: fallAndSpin linear forwards;
         }
 
-        @keyframes fall {
-            to { transform: translateY(120vh) rotate(15deg); }
+        @keyframes fallAndSpin {
+            0% { transform: translateY(-10vh) rotate(0deg) scale(1); }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); } /* Pulses slightly while falling */
+            100% { transform: translateY(110vh) rotate(360deg) scale(1); }
         }
 
-        /* Modals for Video and Notes */
+        /* Modals (Scrapbook Style) */
         .modal {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #F4F1EA;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(139, 90, 98, 0.4);
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3), -10px -10px 0px var(--baby-pink);
             z-index: 100;
-            border: 1px solid #C1777D;
+            border: 3px solid var(--hot-pink);
             width: 90%;
-            max-width: 500px;
+            max-width: 450px;
             max-height: 85vh;
             overflow-y: auto;
             text-align: left;
-        }
-
-        /* Custom Scrollbar for the note */
-        .modal::-webkit-scrollbar {
-            width: 8px;
-        }
-        .modal::-webkit-scrollbar-track {
-            background: #E8D3D5; 
-        }
-        .modal::-webkit-scrollbar-thumb {
-            background: #C1777D; 
+            box-sizing: border-box;
         }
 
         .overlay {
@@ -169,65 +158,74 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(40, 20, 25, 0.6);
-            backdrop-filter: blur(3px);
+            background: rgba(255, 209, 220, 0.8); /* Soft baby pink overlay */
+            backdrop-filter: blur(5px);
             z-index: 90;
         }
 
         .video-container video {
             width: 100%;
-            border: 2px solid #C1777D;
+            border-radius: 15px;
+            border: 4px solid var(--hot-pink);
             background: #000;
         }
 
+        /* Cute handwriting note style */
         .letter-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #5A3A40;
-            font-family: 'Arial', sans-serif;
+            font-size: clamp(1rem, 4.5vw, 1.15rem);
+            line-height: 1.6;
+            color: var(--deep-pink);
+            font-family: inherit;
+            background: #FFF9FA;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--baby-pink);
         }
+
+        .letter-text p { margin-bottom: 15px; }
         
         .close-btn {
             display: block;
             margin: 20px auto 0 auto;
             width: 100%;
             text-align: center;
+            background-color: var(--baby-pink);
+            color: var(--deep-pink);
+            border: 3px solid var(--hot-pink);
         }
     </style>
 </head>
 <body>
 
     <div id="screen1" class="screen">
-        <div class="poster-block">Surprise</div>
         <h1>Bassas birthday surprise</h1>
-        <button onclick="goToScreen(2)">Lets gooooo</button>
+        <button onclick="goToScreen(2)">Lets gooooo 💖</button>
     </div>
 
     <div id="screen2" class="screen">
-        <h2>Bassa ekka tharahada ?</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <h2>Bassa ekka tharahada ? 🥺</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
             <button onclick="clickedOw()">Ow</button>
             <button onclick="goToScreen(3)">Naaa</button>
         </div>
-        <div id="warning-msg">ema krnn epaaa say NAAA</div>
+        <div id="warning-msg">ema krnn epaaa say NAAA 😭</div>
     </div>
 
     <div id="screen3" class="screen">
-        <div class="poster-block" style="font-size: 0.9rem;">Celebrating</div>
-        <h1>HAPP BIRTHDAY ADIIIII</h1>
+        <h1>HAPP BIRTHDAY ADIIIII 🌸</h1>
         
-        <div style="margin-top: 20px; z-index: 10; display: flex; flex-direction: column; gap: 15px;">
-            <button class="magical-btn" onclick="openModal('video-modal')">Play Video</button>
-            <button class="magical-btn" onclick="openModal('note-modal')">Read Note</button>
+        <div style="margin-top: 10px; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; gap: 10px;">
+            <button onclick="openModal('video-modal')">🎬 Play Video</button>
+            <button onclick="openModal('note-modal')">💌 Read Note</button>
         </div>
     </div>
 
     <div id="overlay" class="overlay" onclick="closeModals()"></div>
 
     <div id="video-modal" class="modal">
-        <h2 style="text-align: center; font-size: 1.5rem; margin-top: 0;">Special Memories</h2>
+        <h2 style="text-align: center; font-size: 1.5rem; margin-top: 0; box-shadow: none; border: none; background: transparent;">Special Memories ✨</h2>
         <div class="video-container">
-            <video controls>
+            <video controls playsinline>
                 <source src="assets/v01.MOV" type="video/mp4">
                 <source src="assets/v01.MOV" type="video/quicktime">
                 Your browser does not support the video tag.
@@ -237,49 +235,45 @@
     </div>
 
     <div id="note-modal" class="modal">
-        <h2 style="text-align: center; font-size: 1.5rem; margin-top: 0;">A Letter For You</h2>
+        <h2 style="text-align: center; font-size: 1.5rem; margin-top: 0; box-shadow: none; border: none; background: transparent;">A Letter For You 💌</h2>
         <div class="letter-text">
             <p>Happy Birthday Adiyoooo !!! ♥️🫶🏻</p>
-
             <p>Dnnwaaa mechchrrr ekataaa hitapu api dennaaa mnwadoooii dewal nisa tikak distance welaaa kiylaaa oytth job ekai campus eke wadai gdr dewalui nisa oyth gdk busy unaa mth uni eke final yr project wadai job ekai gdr wadai nisa hdtm busy una kmk naaa ema thamaa</p>
-
             <p>Mechchriii mt kiynn onee uneee hmdm ktha krnn bri unth hmdm hoyl blnn bri unth msg krnn bri unth miita awurudu gnt klin mn ubt adareee krpu widihtmi adath mn adareee adatth mt oya mn arenn wena kenek ekka inn pic dakkama e same jealous eka ENWAAAA oya na kiyl hithan hitiyaaaa</p>
-
             <p>Time yanakotaa ekekaaka dewl wenawaa kmk naaaaa kohomahriiii oygee oonee dektm mn innwaa oyagee hama wish ekakm ture welaaaa oyt poddkwth duka hithenne nthi asa hithena hamadema kann labena asa hama skin care dewal gnn labenaaa innwata wada tgawa thawaath Lassana wenaa Happy ma Happy Birthday ekak weewaaa !!!</p>
-
             <p>Oyge Bassaaaa oyttt mnwa unth adareiii ♥️🫶🏻</p>
         </div>
         <button class="close-btn" onclick="closeModals()">Close Letter</button>
     </div>
 
     <script>
-        // --- NAVIGATION LOGIC ---
         function goToScreen(screenNumber) {
             document.getElementById('screen1').style.display = 'none';
             document.getElementById('screen2').style.display = 'none';
             document.getElementById('screen3').style.display = 'none';
+            
             document.getElementById('screen' + screenNumber).style.display = 'flex';
 
+            // Start the shining pink petals rain only when reaching screen 3
             if (screenNumber === 3) {
-                startRainingImages();
+                startPetalRain();
             }
         }
 
-        // --- 'OW' BUTTON LOGIC ---
         function clickedOw() {
             const warning = document.getElementById('warning-msg');
             warning.style.display = 'block';
+            
+            // Re-trigger animation if clicked multiple times
             warning.style.animation = 'none';
-            warning.offsetHeight; 
-            warning.style.animation = 'shake 0.4s';
+            warning.offsetHeight; /* trigger reflow */
+            warning.style.animation = 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
         }
 
-        // --- MODAL (POPUP) LOGIC ---
         function openModal(modalId) {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById(modalId).style.display = 'block';
             
-            // Auto-play video when opened
             if(modalId === 'video-modal') {
                 const video = document.querySelector('video');
                 if(video) video.play();
@@ -291,53 +285,39 @@
             document.getElementById('video-modal').style.display = 'none';
             document.getElementById('note-modal').style.display = 'none';
             
-            // Pause video when closed
             const video = document.querySelector('video');
             if(video) video.pause();
         }
 
-        // --- RAINING IMAGES LOGIC ---
-        // All paths mapped directly to your assets folder
-        const imagePaths = [
-            'assets/img01.WEBP', 'assets/img02.WEBP', 'assets/img03.HEIC',
-            'assets/img04.jpeg', 'assets/img05.HEIC', 'assets/img06.jpeg',
-            'assets/img07.HEIC', 'assets/img08.HEIC', 'assets/img09.jpeg',
-            'assets/img10.HEIC', 'assets/img11.jpeg', 'assets/img12.HEIC',
-            'assets/img13.jpeg', 'assets/img14.jpeg', 'assets/img15.jpeg',
-            'assets/img16.jpeg', 'assets/img17.jpeg', 'assets/img18.HEIC',
-            'assets/img19.HEIC', 'assets/img20.jpeg', 'assets/img21.jpeg',
-            'assets/img22.jpeg', 'assets/img23.jpeg', 'assets/img24.HEIC',
-            'assets/img25.HEIC'
-        ];
-
-        function createFallingImage() {
-            const img = document.createElement('img');
-            const randomImgIndex = Math.floor(Math.random() * imagePaths.length);
-            img.src = imagePaths[randomImgIndex];
-            img.classList.add('falling-image');
+        // --- SHINING PINK PETALS LOGIC ---
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
 
             // Randomize position across the screen width
-            const randomLeft = Math.random() * 90; 
-            img.style.left = randomLeft + 'vw';
+            const randomLeft = Math.random() * 100; 
+            petal.style.left = randomLeft + 'vw';
 
-            // Randomize speed and sizes for depth effect
-            const randomDuration = Math.random() * 5 + 4; 
-            img.style.animationDuration = randomDuration + 's';
+            // Randomize speed for a natural falling effect
+            const randomDuration = Math.random() * 3 + 3; // Falls between 3 and 6 seconds
+            petal.style.animationDuration = randomDuration + 's';
 
-            // Keep them relatively small for mobile view
-            const randomSize = Math.random() * 50 + 40; 
-            img.style.width = randomSize + 'px';
-            img.style.height = randomSize + 'px';
+            // Randomize petal size
+            const randomSize = Math.random() * 15 + 10; // Width between 10px and 25px
+            petal.style.width = randomSize + 'px';
+            petal.style.height = randomSize * 1.5 + 'px'; // Height slightly longer than width
 
-            document.getElementById('screen3').appendChild(img);
+            document.getElementById('screen3').appendChild(petal);
 
+            // Remove petal from HTML after it finishes falling to prevent lag
             setTimeout(() => {
-                img.remove();
+                petal.remove();
             }, randomDuration * 1000);
         }
 
-        function startRainingImages() {
-            setInterval(createFallingImage, 400);
+        function startPetalRain() {
+            // Create a new glowing petal every 150 milliseconds for a dense, magical rain
+            setInterval(createPetal, 150);
         }
     </script>
 </body>
