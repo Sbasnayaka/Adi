@@ -8,26 +8,21 @@
     <link rel="icon" type="image/webp" href="assets/fav icon.webp">
     
     <style>
-        /* Cute Scrapbook Collage Theme */
-        :root {
-            --baby-pink: #FFD1DC;
-            --hot-pink: #FF69B4;
-            --deep-pink: #D81B60;
-            --white: #FFFFFF;
-            --light-bg: #FFF0F5; /* Lavender Blush */
-        }
+        /* --- SCRAPBOOK COQUETTE THEME --- */
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Fredoka+One&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            /* Soft baby pink background with a subtle cute dot pattern */
-            background-color: var(--light-bg);
-            background-image: radial-gradient(var(--baby-pink) 2px, transparent 2px);
-            background-size: 30px 30px;
-            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
-            color: var(--deep-pink);
+            /* Baby Pink Background with a subtle dotted grid for that scrapbook feel */
+            background-color: #FFE4E1; /* Misty Rose / Baby Pink */
+            background-image: radial-gradient(#FFB6C1 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+            font-family: 'Comic Neue', cursive;
+            color: #FF1493; /* Hot Pink */
             overflow-x: hidden;
             text-align: center;
+            user-select: none;
         }
 
         /* Screen Containers */
@@ -41,116 +36,130 @@
             z-index: 10;
             padding: 20px;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         #screen1 { display: flex; }
 
         /* Typography */
         h1 {
-            font-size: clamp(2.5rem, 10vw, 4rem);
-            color: var(--hot-pink);
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: #FF1493;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 0px var(--white), 5px 5px 0px var(--baby-pink);
+            /* White outline and drop shadow for sticker effect */
+            text-shadow: 
+                -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF, 2px 2px 0 #FFF,
+                4px 4px 0px #FF69B4;
             line-height: 1.2;
-            transform: rotate(-2deg); /* Gives a playful scrapbook feel */
+            z-index: 10;
         }
 
         h2 {
-            font-size: clamp(1.5rem, 7vw, 2.2rem);
-            color: var(--deep-pink);
-            background: var(--white);
-            padding: 10px 20px;
-            border-radius: 15px;
-            border: 3px dashed var(--hot-pink);
-            box-shadow: 4px 4px 0px var(--baby-pink);
-            margin-bottom: 30px;
-            transform: rotate(1deg);
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            color: #FF1493;
+            text-shadow: 2px 2px 0px #FFF;
+            margin-bottom: 20px;
+            z-index: 10;
         }
 
-        /* Cute Bubbly Buttons */
+        /* Buttons - Sticker Vibe */
         button {
-            background-color: var(--hot-pink);
-            color: var(--white);
-            border: 4px solid var(--white);
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: #FFF;
+            border: 4px solid #FFF;
             border-radius: 30px;
             padding: 15px 35px;
             font-size: clamp(1.1rem, 5vw, 1.4rem);
-            font-family: inherit;
-            font-weight: bold;
+            font-family: 'Fredoka One', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.2s ease;
             margin: 10px;
-            width: 80%;
-            max-width: 280px;
-            box-shadow: 0 8px 15px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 8px 15px rgba(255, 20, 147, 0.4);
+            z-index: 10;
         }
 
         button:active {
             transform: scale(0.95);
-            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
         }
 
-        /* Warning text for Screen 2 (like the little quote notes in the collage) */
+        /* Magical Buttons */
+        .magical-btn {
+            background: linear-gradient(45deg, #FFB6C1, #FF69B4, #FF1493);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+            border: 4px dashed #FFF;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Warning text for Screen 2 */
         #warning-msg {
             display: none;
-            color: var(--deep-pink);
+            color: #FF1493;
             font-size: 1.2rem;
             font-weight: bold;
-            margin-top: 20px;
-            background: var(--white);
-            padding: 15px 25px;
-            border-radius: 10px;
-            border-left: 5px solid var(--hot-pink);
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.05);
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            margin-top: 15px;
+            background: #FFF;
+            padding: 12px 25px;
+            border-radius: 20px;
+            border: 3px solid #FF69B4;
+            box-shadow: 3px 3px 0px #FFB6C1;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
         }
 
         @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
+            0% { transform: scale(0.5); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Shining Pink Petals Rain */
+        /* --- RAIN EFFECTS --- */
+        
+        /* 1. Shining Pink Petals (Screen 2) */
         .petal {
             position: absolute;
             top: -50px;
-            /* Create a petal shape using border-radius */
-            border-radius: 50% 0 50% 0;
-            background: linear-gradient(135deg, var(--baby-pink), var(--hot-pink));
-            /* Glowing/shining effect */
-            box-shadow: 0 0 10px var(--hot-pink), 0 0 20px var(--baby-pink);
+            width: 25px;
+            height: 25px;
+            background: #FF69B4;
+            border-radius: 15px 0 15px 0; /* Makes a cute petal shape */
+            box-shadow: 0 0 15px #FFB6C1, 0 0 5px #FFF; /* Shining effect */
             opacity: 0.8;
             z-index: 1;
-            animation: fallAndSpin linear forwards;
+            animation: fallPetal linear forwards;
         }
 
-        @keyframes fallAndSpin {
-            0% { transform: translateY(-10vh) rotate(0deg) scale(1); }
-            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); } /* Pulses slightly while falling */
-            100% { transform: translateY(110vh) rotate(360deg) scale(1); }
+        @keyframes fallPetal {
+            to { transform: translateY(110vh) rotate(360deg) scale(0.8); }
         }
 
-        /* Modals (Scrapbook Style) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--white);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3), -10px -10px 0px var(--baby-pink);
-            z-index: 100;
-            border: 3px solid var(--hot-pink);
-            width: 90%;
-            max-width: 450px;
-            max-height: 85vh;
-            overflow-y: auto;
-            text-align: left;
-            box-sizing: border-box;
+        /* 2. Falling Small Images (Screen 3) */
+        .falling-image {
+            position: absolute;
+            top: -100px;
+            object-fit: cover;
+            border: 3px solid #FFF;
+            border-radius: 12px; /* Scrapbook photo look */
+            box-shadow: 3px 3px 10px rgba(255, 20, 147, 0.3);
+            opacity: 0.95;
+            z-index: 1;
+            animation: fallImage linear forwards;
         }
 
+        @keyframes fallImage {
+            to { transform: translateY(110vh) rotate(-15deg); }
+        }
+
+        /* --- POPUPS / MODALS --- */
         .overlay {
             display: none;
             position: fixed;
@@ -158,40 +167,55 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 209, 220, 0.8); /* Soft baby pink overlay */
+            background: rgba(255, 182, 193, 0.8);
             backdrop-filter: blur(5px);
             z-index: 90;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #FFF;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
+            z-index: 100;
+            border: 5px solid #FF69B4;
+            width: 90%;
+            max-width: 400px;
+            max-height: 85vh;
+            overflow-y: auto;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        /* Custom scrollbar for modals */
+        .modal::-webkit-scrollbar { width: 8px; }
+        .modal::-webkit-scrollbar-track { background: #FFE4E1; border-radius: 10px; }
+        .modal::-webkit-scrollbar-thumb { background: #FF69B4; border-radius: 10px; }
+
         .video-container video {
             width: 100%;
             border-radius: 15px;
-            border: 4px solid var(--hot-pink);
+            border: 3px solid #FF1493;
             background: #000;
         }
 
-        /* Cute handwriting note style */
         .letter-text {
-            font-size: clamp(1rem, 4.5vw, 1.15rem);
+            font-size: clamp(1.1rem, 4.5vw, 1.2rem);
             line-height: 1.6;
-            color: var(--deep-pink);
-            font-family: inherit;
-            background: #FFF9FA;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid var(--baby-pink);
+            color: #D81B60;
+            font-weight: bold;
         }
 
-        .letter-text p { margin-bottom: 15px; }
-        
         .close-btn {
             display: block;
             margin: 20px auto 0 auto;
             width: 100%;
             text-align: center;
-            background-color: var(--baby-pink);
-            color: var(--deep-pink);
-            border: 3px solid var(--hot-pink);
         }
     </style>
 </head>
@@ -199,31 +223,31 @@
 
     <div id="screen1" class="screen">
         <h1>Bassas birthday surprise</h1>
-        <button onclick="goToScreen(2)">Lets gooooo 💖</button>
+        <button onclick="goToScreen(2)">Lets gooooo 🎀</button>
     </div>
 
     <div id="screen2" class="screen">
         <h2>Bassa ekka tharahada ? 🥺</h2>
-        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
             <button onclick="clickedOw()">Ow</button>
             <button onclick="goToScreen(3)">Naaa</button>
         </div>
-        <div id="warning-msg">ema krnn epaaa say NAAA 😭</div>
+        <div id="warning-msg">ema krnn epaaa say NAAA 💔</div>
     </div>
 
     <div id="screen3" class="screen">
-        <h1>HAPP BIRTHDAY ADIIIII 🌸</h1>
+        <h1>HAPP BIRTHDAY ADIIIII 🎂</h1>
         
-        <div style="margin-top: 10px; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; gap: 10px;">
-            <button onclick="openModal('video-modal')">🎬 Play Video</button>
-            <button onclick="openModal('note-modal')">💌 Read Note</button>
+        <div style="margin-top: 15px; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; gap: 10px;">
+            <button class="magical-btn" onclick="openModal('video-modal')">✨ Play Video ✨</button>
+            <button class="magical-btn" onclick="openModal('note-modal')">💌 Read Note 💌</button>
         </div>
     </div>
 
     <div id="overlay" class="overlay" onclick="closeModals()"></div>
 
     <div id="video-modal" class="modal">
-        <h2 style="text-align: center; font-size: 1.5rem; margin-top: 0; box-shadow: none; border: none; background: transparent;">Special Memories ✨</h2>
+        <h2 style="text-align: center; font-size: 1.8rem; margin-top: 0; color:#FF1493;">Memories 💖</h2>
         <div class="video-container">
             <video controls playsinline>
                 <source src="assets/v01.MOV" type="video/mp4">
@@ -235,7 +259,7 @@
     </div>
 
     <div id="note-modal" class="modal">
-        <h2 style="text-align: center; font-size: 1.5rem; margin-top: 0; box-shadow: none; border: none; background: transparent;">A Letter For You 💌</h2>
+        <h2 style="text-align: center; font-size: 1.8rem; margin-top: 0; color:#FF1493;">For You 🌸</h2>
         <div class="letter-text">
             <p>Happy Birthday Adiyoooo !!! ♥️🫶🏻</p>
             <p>Dnnwaaa mechchrrr ekataaa hitapu api dennaaa mnwadoooii dewal nisa tikak distance welaaa kiylaaa oytth job ekai campus eke wadai gdr dewalui nisa oyth gdk busy unaa mth uni eke final yr project wadai job ekai gdr wadai nisa hdtm busy una kmk naaa ema thamaa</p>
@@ -247,6 +271,10 @@
     </div>
 
     <script>
+        let petalInterval;
+        let imageInterval;
+
+        // --- NAVIGATION LOGIC ---
         function goToScreen(screenNumber) {
             document.getElementById('screen1').style.display = 'none';
             document.getElementById('screen2').style.display = 'none';
@@ -254,22 +282,27 @@
             
             document.getElementById('screen' + screenNumber).style.display = 'flex';
 
-            // Start the shining pink petals rain only when reaching screen 3
-            if (screenNumber === 3) {
+            if (screenNumber === 2) {
+                // Start shining pink petals on the question screen
                 startPetalRain();
+            } else if (screenNumber === 3) {
+                // Stop petals, start small images on the final screen
+                clearInterval(petalInterval);
+                startImageRain();
             }
         }
 
+        // --- 'OW' BUTTON LOGIC ---
         function clickedOw() {
             const warning = document.getElementById('warning-msg');
             warning.style.display = 'block';
-            
-            // Re-trigger animation if clicked multiple times
+            // Trigger animation re-flow
             warning.style.animation = 'none';
-            warning.offsetHeight; /* trigger reflow */
-            warning.style.animation = 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+            warning.offsetHeight; 
+            warning.style.animation = 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         }
 
+        // --- MODAL LOGIC ---
         function openModal(modalId) {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById(modalId).style.display = 'block';
@@ -289,35 +322,67 @@
             if(video) video.pause();
         }
 
-        // --- SHINING PINK PETALS LOGIC ---
+        // --- 1. SHINING PETAL RAIN (Screen 2) ---
         function createPetal() {
             const petal = document.createElement('div');
             petal.classList.add('petal');
-
-            // Randomize position across the screen width
-            const randomLeft = Math.random() * 100; 
+            
+            const randomLeft = Math.random() * 100;
             petal.style.left = randomLeft + 'vw';
-
-            // Randomize speed for a natural falling effect
-            const randomDuration = Math.random() * 3 + 3; // Falls between 3 and 6 seconds
+            
+            const randomDuration = Math.random() * 3 + 3; // 3 to 6 seconds
             petal.style.animationDuration = randomDuration + 's';
 
-            // Randomize petal size
-            const randomSize = Math.random() * 15 + 10; // Width between 10px and 25px
-            petal.style.width = randomSize + 'px';
-            petal.style.height = randomSize * 1.5 + 'px'; // Height slightly longer than width
+            document.getElementById('screen2').appendChild(petal);
 
-            document.getElementById('screen3').appendChild(petal);
-
-            // Remove petal from HTML after it finishes falling to prevent lag
             setTimeout(() => {
                 petal.remove();
             }, randomDuration * 1000);
         }
 
         function startPetalRain() {
-            // Create a new glowing petal every 150 milliseconds for a dense, magical rain
-            setInterval(createPetal, 150);
+            petalInterval = setInterval(createPetal, 300);
+        }
+
+        // --- 2. IMAGE RAIN (Screen 3) ---
+        const imagePaths = [
+            'assets/img01.WEBP', 'assets/img02.WEBP', 'assets/img03.jpg',
+            'assets/img04.jpeg', 'assets/img05.jpg', 'assets/img06.jpeg',
+            'assets/img07.jpg', 'assets/img08.jpg', 'assets/img09.jpeg',
+            'assets/img10.jpg', 'assets/img11.jpeg', 'assets/img12.jpg',
+            'assets/img13.jpeg', 'assets/img14.jpeg', 'assets/img15.jpeg',
+            'assets/img16.jpeg', 'assets/img17.jpeg', 'assets/img18.jpg',
+            'assets/img19.jpg', 'assets/img20.jpeg', 'assets/img21.jpeg',
+            'assets/img22.jpeg', 'assets/img23.jpeg', 'assets/img24.jpg',
+            'assets/img25.jpg'
+        ];
+
+        function createFallingImage() {
+            const img = document.createElement('img');
+            const randomImgIndex = Math.floor(Math.random() * imagePaths.length);
+            img.src = imagePaths[randomImgIndex];
+            img.classList.add('falling-image');
+
+            const randomLeft = Math.random() * 90; 
+            img.style.left = randomLeft + 'vw';
+
+            const randomDuration = Math.random() * 5 + 5; // Slower, dreamy fall
+            img.style.animationDuration = randomDuration + 's';
+
+            // "smaller size" as requested
+            const randomSize = Math.random() * 30 + 30; // 30px to 60px
+            img.style.width = randomSize + 'px';
+            img.style.height = randomSize + 'px';
+
+            document.getElementById('screen3').appendChild(img);
+
+            setTimeout(() => {
+                img.remove();
+            }, randomDuration * 1000);
+        }
+
+        function startImageRain() {
+            imageInterval = setInterval(createFallingImage, 400); 
         }
     </script>
 </body>
