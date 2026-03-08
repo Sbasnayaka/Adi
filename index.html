@@ -14,18 +14,16 @@
         body {
             margin: 0;
             padding: 0;
-            /* Baby Pink Background with a subtle dotted grid for that scrapbook feel */
-            background-color: #FFE4E1; /* Misty Rose / Baby Pink */
+            background-color: #FFE4E1; 
             background-image: radial-gradient(#FFB6C1 1.5px, transparent 1.5px);
             background-size: 20px 20px;
             font-family: 'Comic Neue', cursive;
-            color: #FF1493; /* Hot Pink */
+            color: #FF1493; 
             overflow-x: hidden;
             text-align: center;
             user-select: none;
         }
 
-        /* Screen Containers */
         .screen {
             display: none;
             min-height: 100vh;
@@ -41,13 +39,11 @@
 
         #screen1 { display: flex; }
 
-        /* Typography */
         h1 {
             font-family: 'Fredoka One', cursive;
             font-size: clamp(2.5rem, 8vw, 4rem);
             color: #FF1493;
             margin-bottom: 20px;
-            /* White outline and drop shadow for sticker effect */
             text-shadow: 
                 -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF, 2px 2px 0 #FFF,
                 4px 4px 0px #FF69B4;
@@ -64,7 +60,6 @@
             z-index: 10;
         }
 
-        /* Buttons - Sticker Vibe */
         button {
             background: linear-gradient(135deg, #FF69B4, #FF1493);
             color: #FFF;
@@ -87,7 +82,6 @@
             box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
         }
 
-        /* Magical Buttons */
         .magical-btn {
             background: linear-gradient(45deg, #FFB6C1, #FF69B4, #FF1493);
             background-size: 200% 200%;
@@ -101,7 +95,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Warning text for Screen 2 */
         #warning-msg {
             display: none;
             color: #FF1493;
@@ -123,36 +116,41 @@
         }
 
         /* --- RAIN EFFECTS --- */
-        
-        /* 1. Shining Pink Petals (Screen 2) */
         .petal {
             position: absolute;
             top: -50px;
             width: 25px;
             height: 25px;
             background: #FF69B4;
-            border-radius: 15px 0 15px 0; /* Makes a cute petal shape */
-            box-shadow: 0 0 15px #FFB6C1, 0 0 5px #FFF; /* Shining effect */
+            border-radius: 15px 0 15px 0; 
+            box-shadow: 0 0 15px #FFB6C1, 0 0 5px #FFF; 
             opacity: 0.8;
             z-index: 1;
             animation: fallPetal linear forwards;
+            /* CRITICAL FOR MOBILE: Allows buttons to be clicked through the rain */
+            pointer-events: none; 
+            /* Hardware acceleration for smooth mobile performance */
+            will-change: transform;
         }
 
         @keyframes fallPetal {
             to { transform: translateY(110vh) rotate(360deg) scale(0.8); }
         }
 
-        /* 2. Falling Small Images (Screen 3) */
         .falling-image {
             position: absolute;
             top: -100px;
             object-fit: cover;
             border: 3px solid #FFF;
-            border-radius: 12px; /* Scrapbook photo look */
+            border-radius: 12px; 
             box-shadow: 3px 3px 10px rgba(255, 20, 147, 0.3);
             opacity: 0.95;
             z-index: 1;
             animation: fallImage linear forwards;
+            /* CRITICAL FOR MOBILE */
+            pointer-events: none;
+            /* Hardware acceleration for smooth mobile performance */
+            will-change: transform;
         }
 
         @keyframes fallImage {
@@ -192,7 +190,6 @@
             box-sizing: border-box;
         }
 
-        /* Custom scrollbar for modals */
         .modal::-webkit-scrollbar { width: 8px; }
         .modal::-webkit-scrollbar-track { background: #FFE4E1; border-radius: 10px; }
         .modal::-webkit-scrollbar-thumb { background: #FF69B4; border-radius: 10px; }
@@ -232,11 +229,11 @@
             <button onclick="clickedOw()">Ow</button>
             <button onclick="goToScreen(3)">Naaa</button>
         </div>
-        <div id="warning-msg">ema krnn epaaa say NAAA 💔</div>
+        <div id="warning-msg">ema krnn epaaa halooooo NAAA kiynnnnnn 💔</div>
     </div>
 
     <div id="screen3" class="screen">
-        <h1>HAPP BIRTHDAY ADIIIII 🎂</h1>
+        <h1>HAPPYYY BIRTHDAYYY ADIIIII ♥️🫶🏻</h1>
         
         <div style="margin-top: 15px; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; gap: 10px;">
             <button class="magical-btn" onclick="openModal('video-modal')">✨ Play Video ✨</button>
@@ -274,7 +271,6 @@
         let petalInterval;
         let imageInterval;
 
-        // --- NAVIGATION LOGIC ---
         function goToScreen(screenNumber) {
             document.getElementById('screen1').style.display = 'none';
             document.getElementById('screen2').style.display = 'none';
@@ -283,26 +279,21 @@
             document.getElementById('screen' + screenNumber).style.display = 'flex';
 
             if (screenNumber === 2) {
-                // Start shining pink petals on the question screen
                 startPetalRain();
             } else if (screenNumber === 3) {
-                // Stop petals, start small images on the final screen
                 clearInterval(petalInterval);
                 startImageRain();
             }
         }
 
-        // --- 'OW' BUTTON LOGIC ---
         function clickedOw() {
             const warning = document.getElementById('warning-msg');
             warning.style.display = 'block';
-            // Trigger animation re-flow
             warning.style.animation = 'none';
             warning.offsetHeight; 
             warning.style.animation = 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         }
 
-        // --- MODAL LOGIC ---
         function openModal(modalId) {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById(modalId).style.display = 'block';
@@ -322,15 +313,14 @@
             if(video) video.pause();
         }
 
-        // --- 1. SHINING PETAL RAIN (Screen 2) ---
         function createPetal() {
             const petal = document.createElement('div');
             petal.classList.add('petal');
             
-            const randomLeft = Math.random() * 100;
+            const randomLeft = Math.random() * 95; // Keeps it slightly within the screen width
             petal.style.left = randomLeft + 'vw';
             
-            const randomDuration = Math.random() * 3 + 3; // 3 to 6 seconds
+            const randomDuration = Math.random() * 3 + 2; // Speeds up the fall slightly
             petal.style.animationDuration = randomDuration + 's';
 
             document.getElementById('screen2').appendChild(petal);
@@ -341,10 +331,10 @@
         }
 
         function startPetalRain() {
-            petalInterval = setInterval(createPetal, 300);
+            // Decreased from 300 to 100 for a much heavier petal rain
+            petalInterval = setInterval(createPetal, 100);
         }
 
-        // --- 2. IMAGE RAIN (Screen 3) ---
         const imagePaths = [
             'assets/img01.WEBP', 'assets/img02.WEBP', 'assets/img03.jpg',
             'assets/img04.jpeg', 'assets/img05.jpg', 'assets/img06.jpeg',
@@ -363,14 +353,13 @@
             img.src = imagePaths[randomImgIndex];
             img.classList.add('falling-image');
 
-            const randomLeft = Math.random() * 90; 
+            const randomLeft = Math.random() * 85; // Keeps image from causing horizontal scroll
             img.style.left = randomLeft + 'vw';
 
-            const randomDuration = Math.random() * 5 + 5; // Slower, dreamy fall
+            const randomDuration = Math.random() * 4 + 4; // Faster fall speed
             img.style.animationDuration = randomDuration + 's';
 
-            // "smaller size" as requested
-            const randomSize = Math.random() * 30 + 30; // 30px to 60px
+            const randomSize = Math.random() * 40 + 40; // Sizes between 40px and 80px
             img.style.width = randomSize + 'px';
             img.style.height = randomSize + 'px';
 
@@ -382,7 +371,8 @@
         }
 
         function startImageRain() {
-            imageInterval = setInterval(createFallingImage, 400); 
+            // Decreased from 400 to 150 for a heavier downpour of images!
+            imageInterval = setInterval(createFallingImage, 150); 
         }
     </script>
 </body>
